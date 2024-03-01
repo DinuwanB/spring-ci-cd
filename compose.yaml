@@ -1,9 +1,16 @@
+version: '3.9'
+
 services:
-  postgres:
-    image: 'postgres:latest'
+  db:
+    image: mysql:latest
+    restart: always
     environment:
-      - 'POSTGRES_DB=student_db'
-      - 'POSTGRES_PASSWORD=password'
-      - 'POSTGRES_USER=user'
+      MYSQL_DATABASE: student_db  # Replace with your desired database name
+      MYSQL_USER: user         # Replace with your desired username
+      MYSQL_PASSWORD: password # Replace with a strong password
+      MYSQL_ROOT_PASSWORD: password # Replace with a strong password for root user (optional)
+#    volumes:
+#      - mysql_data:/var/lib/mysql   # Persist data volume (optional)
     ports:
-      - '5432:5432'
+      - '3307:3306'
+
