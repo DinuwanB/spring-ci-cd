@@ -11,18 +11,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Setup JDK 21
         uses: actions/setup-java@v3
         with:
           distribution: 'corretto'
-          java-version: 21
+          java-version: '21'
 
       - name: Unit Tests
-        run: |
-          mvn -B test --file pom.xml || echo "Unit tests failed!"
-        continue-on-error: true
+        run: mvn -B test --file pom.xml
 
       - name: Build the application
         run:
